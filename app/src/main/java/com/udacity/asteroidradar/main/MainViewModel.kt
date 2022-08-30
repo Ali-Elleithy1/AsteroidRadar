@@ -72,6 +72,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     var asteroids = repository.asteroids
     var pictureOfDay = repository.pictureOfDay
+    var pictureOfDayContent = repository.pictureOfDay.value?.title?:"Empty image"
+
 
     fun displayAsteroidDetails(asteroid: Asteroid)
     {
