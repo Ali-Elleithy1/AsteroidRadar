@@ -29,34 +29,37 @@
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/placeholder_picture_of_day"
+                imgOfDayContentDescription="@{viewModel.pictureOfDayContent}"
                 imageOfDay="@{viewModel.pictureOfDay}"/>
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:textSize="20sp"
                 android:layout_gravity="bottom"
                 android:background="#55010613"
-                android:text="@string/image_of_the_day" />
+                android:contentDescription="@string/image_of_the_day_content_description"
+                android:padding="16dp"
+                android:text="@string/image_of_the_day"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
         </FrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/asteroid_recycler"
+            listData="@{viewModel.asteroids}"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:contentDescription="@string/recyclerview_content_description"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/activity_main_image_of_the_day_layout"
-            app:layout_constraintVertical_bias="0.0"
-            listData="@{viewModel.asteroids}"/>
+            app:layout_constraintVertical_bias="0.0" />
 
         <ProgressBar
             android:id="@+id/status_loading_wheel"
