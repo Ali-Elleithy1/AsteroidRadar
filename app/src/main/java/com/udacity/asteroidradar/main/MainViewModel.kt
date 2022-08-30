@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar.main
 
 import android.app.Application
+import android.graphics.Picture
 import android.util.Log
 import androidx.lifecycle.*
 import com.udacity.asteroidradar.Asteroid
@@ -97,18 +98,24 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 AsteroidsApiFilter.DAY.value -> {
                     today = dateFormat.format(currentTime)
                     database.asteroidRadarDao.getTodayAsteroids(today).map {
-                        it.asDomainModel()
+                        it?.let {
+                            it.asDomainModel()
+                        }
                     }
                 }
                 AsteroidsApiFilter.WEEK.value -> {
                     database.asteroidRadarDao.getWeekAsteroids(getNextSevenDaysFormattedDates())
                         .map {
-                            it.asDomainModel()
+                            it?.let {
+                                it.asDomainModel()
+                            }
                         }
                 }
                 else -> {
                     database.asteroidRadarDao.getAsteroids().map {
-                        it.asDomainModel()
+                        it?.let {
+                            it.asDomainModel()
+                        }
                     }
                 }
             }
