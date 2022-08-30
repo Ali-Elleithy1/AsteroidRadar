@@ -15,13 +15,17 @@ import org.json.JSONObject
 
 class Repository (private val database: AsteroidRadarDatabase)
 {
-    val pictureOfDay: LiveData<PictureOfDay> = database.asteroidRadarDao.getPicture().map {
-        it.asDomainModel()
+    val pictureOfDay: LiveData<PictureOfDay?> = database.asteroidRadarDao.getPicture().map {
+        it?.let {
+            it.asDomainModel()
+        }
     }
 
-    val asteroids: LiveData<List<Asteroid>> = Transformations.map(database.asteroidRadarDao.getAsteroids())
+    val asteroids: LiveData<List<Asteroid>?> = Transformations.map(database.asteroidRadarDao.getAsteroids())
     {
-        it.asDomainModel()
+        it?.let {
+            it.asDomainModel()
+        }
     }
 
     suspend fun refreshData()
