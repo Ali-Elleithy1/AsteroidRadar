@@ -1,12 +1,16 @@
 package com.udacity.asteroidradar
 
+import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.squareup.picasso.Picasso
+import com.udacity.asteroidradar.main.ApiStatus
 
 @BindingAdapter("statusIcon")
 fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
@@ -44,8 +48,24 @@ fun bindTextViewToDisplayVelocity(textView: TextView, number: Double) {
     textView.text = String.format(context.getString(R.string.km_s_unit_format), number)
 }
 
+@BindingAdapter("asteroidsStatus")
+fun asteroidsStatus(progressBar: ProgressBar, apiStatus: ApiStatus?)
+{
+    apiStatus.let {
+        when (apiStatus)
+        {
+            ApiStatus.LOADING -> {
+                progressBar.visibility = View.VISIBLE
+            }
+            ApiStatus.DONE -> {
+                progressBar.visibility = View.GONE
+            }
+        }
+    }
+}
+
 @BindingAdapter("listData")
-fun bindAsteroids(recyclerView: RecyclerView, data: ArrayList<Asteroid>?)
+fun bindAsteroids(recyclerView: RecyclerView, data: List<Asteroid>?)
 {
     data?.let {
         val adapter = recyclerView.adapter as AsteroidsAdapter
@@ -66,6 +86,12 @@ fun bindImage(imageView: ImageView, imgOfDay: PictureOfDay?)
                     .placeholder(R.drawable.loading_animation)
                     .error(R.drawable.ic_error))
                 .into(imageView)
+
+//            Picasso.get()
+//                .load(imgUri)
+//                .placeholder(R.drawable.loading_animation)
+//                .error(R.drawable.ic_error)
+//                .into(imageView)
         }
         else
         {
@@ -73,6 +99,5 @@ fun bindImage(imageView: ImageView, imgOfDay: PictureOfDay?)
             .load(R.drawable.ic_error)
             .into(imageView)
         }
-
     }
 }
