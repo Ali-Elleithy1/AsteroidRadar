@@ -64,6 +64,14 @@ fun asteroidsStatus(progressBar: ProgressBar, apiStatus: ApiStatus?)
     }
 }
 
+@BindingAdapter("imgOfDayContentDescription")
+fun imgOfDayContentDescription(imageView: ImageView, content: String?)
+{
+    content?.let {
+        imageView.contentDescription = content
+    }
+}
+
 @BindingAdapter("listData")
 fun bindAsteroids(recyclerView: RecyclerView, data: List<Asteroid>?)
 {
