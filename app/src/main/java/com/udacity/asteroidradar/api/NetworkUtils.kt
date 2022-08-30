@@ -11,6 +11,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
+import retrofit2.http.Query
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -61,40 +62,40 @@ private fun getNextSevenDaysFormattedDates(): ArrayList<String> {
         formattedDateList.add(dateFormat.format(currentTime))
         calendar.add(Calendar.DAY_OF_YEAR, 1)
     }
-
     return formattedDateList
 }
 
 
 
-private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-
-private val retrofit = Retrofit.Builder()
-    .addConverterFactory(MoshiConverterFactory.create(moshi))
-    .baseUrl(Constants.BASE_URL)
-    .build()
-
-
-//ScalarsConverterFactory.create()
-private val retrofit2 = Retrofit.Builder()
-    .addConverterFactory(ScalarsConverterFactory.create())
-    .baseUrl(Constants.BASE_URL)
-    .build()
-
-interface AsteroidsApiService {
-    @GET("neo/rest/v1/feed?start_date=2022-08-12&end_date=2022-08-19&api_key=0NfGUIj9pkFvQS4UMYekGYCgu04ARFQReH5dNbf2")
-    suspend fun getAsteroids(): String
-}
-
-object AsteroidsApi{
-    val retrofitService: AsteroidsApiService by lazy { retrofit2.create(AsteroidsApiService::class.java) }
-}
-
-interface PictureOfDayApiService {
-    @GET("planetary/apod?api_key=0NfGUIj9pkFvQS4UMYekGYCgu04ARFQReH5dNbf2")
-    suspend fun getPicture(): PictureOfDay
-}
-
-object PictureOfDayApi {
-    val retrofitService: PictureOfDayApiService by lazy { retrofit.create(PictureOfDayApiService::class.java) }
-}
+//private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+//
+//private val retrofit = Retrofit.Builder()
+//    .addConverterFactory(MoshiConverterFactory.create(moshi))
+//    .baseUrl(Constants.BASE_URL)
+//    .build()
+//
+//
+////ScalarsConverterFactory.create()
+//private val retrofit2 = Retrofit.Builder()
+//    .addConverterFactory(ScalarsConverterFactory.create())
+//    .baseUrl(Constants.BASE_URL)
+//    .build()
+//
+//interface AsteroidsApiService {
+//    //@GET("neo/rest/v1/feed?start_date=2022-08-12&end_date=2022-08-19&api_key=0NfGUIj9pkFvQS4UMYekGYCgu04ARFQReH5dNbf2"
+//    @GET("neo/rest/v1/feed?api_key=0NfGUIj9pkFvQS4UMYekGYCgu04ARFQReH5dNbf2")
+//    suspend fun getAsteroids(): String
+//}
+//
+//object AsteroidsApi{
+//    val retrofitService: AsteroidsApiService by lazy { retrofit2.create(AsteroidsApiService::class.java) }
+//}
+//
+//interface PictureOfDayApiService {
+//    @GET("planetary/apod?api_key=0NfGUIj9pkFvQS4UMYekGYCgu04ARFQReH5dNbf2")
+//    suspend fun getPicture(): PictureOfDay
+//}
+//
+//object PictureOfDayApi {
+//    val retrofitService: PictureOfDayApiService by lazy { retrofit.create(PictureOfDayApiService::class.java) }
+//}
