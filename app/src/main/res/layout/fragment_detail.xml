@@ -47,6 +47,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/close_approach_content_description"
                         android:text="@string/close_approach_data_title"
                         android:textColor="@color/default_text_color" />
 
