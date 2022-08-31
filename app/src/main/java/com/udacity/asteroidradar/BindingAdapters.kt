@@ -25,8 +25,10 @@ fun bindAsteroidStatusImage(imageView: ImageView, isHazardous: Boolean) {
 fun bindDetailsStatusImage(imageView: ImageView, isHazardous: Boolean) {
     if (isHazardous) {
         imageView.setImageResource(R.drawable.asteroid_hazardous)
+        imageView.contentDescription = imageView.context.getString(R.string.potentially_hazardous_asteroid_image)
     } else {
         imageView.setImageResource(R.drawable.asteroid_safe)
+        imageView.contentDescription = imageView.context.getString(R.string.not_hazardous_asteroid_image)
     }
 }
 
@@ -85,7 +87,7 @@ fun bindAsteroids(recyclerView: RecyclerView, data: List<Asteroid>?)
 fun bindImage(imageView: ImageView, imgOfDay: PictureOfDay?)
 {
     imgOfDay?.let {
-        if(imgOfDay.mediaType=="image")
+        if(imgOfDay.mediaType == "image")
         {
             val imgUri = imgOfDay.url.toUri().buildUpon().scheme("https").build()
             Glide.with(imageView.context)
@@ -94,12 +96,6 @@ fun bindImage(imageView: ImageView, imgOfDay: PictureOfDay?)
                     .placeholder(R.drawable.loading_animation)
                     .error(R.drawable.ic_error))
                 .into(imageView)
-
-//            Picasso.get()
-//                .load(imgUri)
-//                .placeholder(R.drawable.loading_animation)
-//                .error(R.drawable.ic_error)
-//                .into(imageView)
         }
         else
         {
