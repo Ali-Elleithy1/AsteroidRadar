@@ -22,4 +22,5 @@
     <string name="image_of_the_day_content_description">Image of the day text</string>
     <string name="recyclerview_content_description">Asteroid list</string>
     <string name="close_approach_content_description">Close approach text</string>
+    <string name="helper_button_content_description">More information</string>
 </resources>
