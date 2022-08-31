@@ -34,13 +34,6 @@ class MainFragment : Fragment() {
             viewModel.displayAsteroidDetails(it)
         })
 
-//        viewModel.picture.observe(viewLifecycleOwner, Observer {
-//
-//            if(it.mediaType == "image") {
-//                Glide.with(this).load(it.url).into(binding.activityMainImageOfTheDay)
-//            }
-//        })
-
         viewModel.navigateToSelectedAsteroid.observe(viewLifecycleOwner, Observer {
             if(it != null)
             {

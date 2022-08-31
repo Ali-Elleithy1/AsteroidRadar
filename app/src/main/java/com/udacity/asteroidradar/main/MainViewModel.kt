@@ -32,14 +32,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val database = AsteroidRadarDatabase.getInstance(application)
     private val repository = Repository(database)
 
-//    private val _picture = MutableLiveData<PictureOfDay>()
-//    val picture: LiveData<PictureOfDay>
-//        get() = _picture
-//
-//    private val _asteroids1 = MutableLiveData<List<Asteroid>>()
-//    val asteroid1:LiveData<List<Asteroid>>
-//        get() = _asteroids1
-
     private val _asteroidsTime = MutableLiveData<String>("saved")
     val asteroidTime:LiveData<String>
         get() = _asteroidsTime
@@ -65,15 +57,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 Log.i("refresh", "No Internet Connection.")
             }
         }
-//        _asteroids.value = repository.asteroids
-//        _picture.value = repository.pictureOfDay
-//        getPictureOfDay()
-//        getAsteroids()
     }
 
     var asteroids = repository.asteroids
     var pictureOfDay = repository.pictureOfDay
-    var pictureOfDayContent = repository.pictureOfDay.value?.title?:"Empty image"
 
 
     fun displayAsteroidDetails(asteroid: Asteroid)
@@ -92,7 +79,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun updateFilter() {
-        //setAsteroidType(filter)
         asteroids = Transformations.switchMap(_asteroidsTime) { type ->
             when (type) {
                 AsteroidsApiFilter.DAY.value -> {

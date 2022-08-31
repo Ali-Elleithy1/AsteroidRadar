@@ -64,38 +64,3 @@ private fun getNextSevenDaysFormattedDates(): ArrayList<String> {
     }
     return formattedDateList
 }
-
-
-
-//private val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-//
-//private val retrofit = Retrofit.Builder()
-//    .addConverterFactory(MoshiConverterFactory.create(moshi))
-//    .baseUrl(Constants.BASE_URL)
-//    .build()
-//
-//
-////ScalarsConverterFactory.create()
-//private val retrofit2 = Retrofit.Builder()
-//    .addConverterFactory(ScalarsConverterFactory.create())
-//    .baseUrl(Constants.BASE_URL)
-//    .build()
-//
-//interface AsteroidsApiService {
-//    //@GET("neo/rest/v1/feed?start_date=2022-08-12&end_date=2022-08-19&api_key=0NfGUIj9pkFvQS4UMYekGYCgu04ARFQReH5dNbf2"
-//    @GET("neo/rest/v1/feed?api_key=0NfGUIj9pkFvQS4UMYekGYCgu04ARFQReH5dNbf2")
-//    suspend fun getAsteroids(): String
-//}
-//
-//object AsteroidsApi{
-//    val retrofitService: AsteroidsApiService by lazy { retrofit2.create(AsteroidsApiService::class.java) }
-//}
-//
-//interface PictureOfDayApiService {
-//    @GET("planetary/apod?api_key=0NfGUIj9pkFvQS4UMYekGYCgu04ARFQReH5dNbf2")
-//    suspend fun getPicture(): PictureOfDay
-//}
-//
-//object PictureOfDayApi {
-//    val retrofitService: PictureOfDayApiService by lazy { retrofit.create(PictureOfDayApiService::class.java) }
-//}

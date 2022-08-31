@@ -21,8 +21,6 @@ private val retrofit = Retrofit.Builder()
     .build()
 
 interface AsteroidRadarApiService {
-    //@GET("neo/rest/v1/feed?start_date=2022-08-12&end_date=2022-08-19&api_key=0NfGUIj9pkFvQS4UMYekGYCgu04ARFQReH5dNbf2"
-    //"neo/rest/v1/feed?api_key=0NfGUIj9pkFvQS4UMYekGYCgu04ARFQReH5dNbf2"
     @GET("neo/rest/v1/feed?api_key=0NfGUIj9pkFvQS4UMYekGYCgu04ARFQReH5dNbf2")
     suspend fun getAsteroids(): String
 
