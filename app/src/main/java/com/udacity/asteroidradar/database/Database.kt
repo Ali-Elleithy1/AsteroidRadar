@@ -27,7 +27,5 @@ abstract class AsteroidRadarDatabase: RoomDatabase()
                 return instance
             }
         }
-
-
     }
 }
