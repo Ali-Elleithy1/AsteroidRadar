@@ -1,22 +1,15 @@
 package com.udacity.asteroidradar.main
 
 import android.app.Application
-import android.graphics.Picture
 import android.util.Log
 import androidx.lifecycle.*
 import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.Constants
-import com.udacity.asteroidradar.PictureOfDay
-import com.udacity.asteroidradar.api.AsteroidRadarApi
 import com.udacity.asteroidradar.api.AsteroidsApiFilter
-import com.udacity.asteroidradar.api.parseAsteroidsJsonResult
 import com.udacity.asteroidradar.database.AsteroidRadarDatabase
 import com.udacity.asteroidradar.database.asDomainModel
 import com.udacity.asteroidradar.repository.Repository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.Exception
